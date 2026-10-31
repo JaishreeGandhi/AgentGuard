@@ -47,7 +47,9 @@ export const App: React.FC = () => {
   const [traceStatusFilter, setTraceStatusFilter] = useState<string>("ALL");
 
   // Overlays
-  const [selectedTraceId, setSelectedTraceId] = useState<string | null>(null);
+  const [selectedTraceId, setSelectedTraceId] = useState<string | null>(
+    () => new URLSearchParams(window.location.search).get("trace") || null
+  );
   const [isRunModalOpen, setIsRunModalOpen] = useState<boolean>(false);
   const [activeModalAgentId, setActiveModalAgentId] = useState<string | null>(null);
 
